@@ -1,0 +1,50 @@
+/*
+ FoxTales - Css referring to Wishlist
+ Version: 1.0
+ Data:
+ Creator: Melany
+
+*/
+
+
+/******** Body ********/
+body{background: url("img/books2.jpg");background-size: cover;background-repeat: no-repeat;background-attachment:fixed;color:#fff}
+
+/******** NavBar ********/
+.navi{background: rgba(213, 113, 27, 0.5);}
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-text {font-weight: bold;color: #fff;}
+.navbar-default .navbar-brand{color:#fff}
+.navbar-default .navbar-toggle:focus,.navbar-default .navbar-toggle:hover{background-color: rgba(213, 113, 27, 0.0);}
+.navbar-default .navbar-toggle{border-color: #fff;}
+.navbar-default .navbar-toggle .icon-bar{background-color: #fff;}
+.navbar-default .navbar-nav>.open>a,.navbar-default .navbar-nav>.open>a:focus,.navbar-default .navbar-nav>.open>a:hover{background-color: rgba(232, 227, 222, 0.34);color: #333;}
+.dropdown-menu{position:absolute;top:100%;left:0;z-index:1000;display:none;min-width:160px;padding:5px 0;margin:2px 0 0;list-style:none;font-size: 16px;text-align:left;background-color: rgba(232, 227, 222, 0.90);border:1px solid #ccc;border:1px solid rgba(0,0,0,.15);border-radius:4px;box-shadow:0 6px 12px rgba(0,0,0,.175);background-clip:padding-box;}
+
+/******** Titles/Fonts ********/
+.h2,h2{font-size:40px;padding-left: 50px;padding-bottom: 0px;font-weight: bold;}
+.fontsize{font-size: 19px;}
+
+/*.table{width: -webkit-fill-available;margin: 32px;}
+.table-bordered,.table-bordered>tbody>tr>td,.table-bordered>tbody>tr>th,.table-bordered>tfoot>tr>td,.table-bordered>tfoot>tr>th,.table-bordered>thead>tr>td,.table-bordered>thead>tr>th{border: 2px solid #ddd;}*/
+
+/******** Panels ********/
+.panel{margin-top: 60px;padding: 10px;background-color: rgba(4, 4, 4, 0.42);border: 1px solid rgba(0, 0, 0, 0.11);border-radius:4px;box-shadow: 0px -1px 16px 3px rgba(0, 0, 0, 0.58);}
+.panel-default>.panel-heading{ font-weight: bold;font-size:large;color:#fff;background-color:rgba(4, 1, 4, 0.01);border-color:#d3e0e9}
+
+/******** Forms ********/
+.form-horizontal .control-label{text-align:right;margin-bottom:0;padding-top:7px;font-size: medium;}
+.form-control{width:100%;height:36px;padding:6px 12px;background-color:#fff;border: 1px solid rgba(20, 20, 21, 0.72);border-radius:4px;box-shadow:inset 0 1px 1px rgba(0,0,0,.075);transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
+.styleform{margin-top: 10px;padding: 10px;background-color: rgba(74, 70, 70, 0.42);border: 1px solid rgba(0, 0, 0, 0.11);border-radius:4px;box-shadow: 0px -1px 16px 3px rgba(105, 98, 98, 0.58);}
+
+/******** Buttons ********/
+.btn-link{color: #fff}
+.btn-danger{color:#fff;background-color: #c5140c;border-color: #d4160d;}.btn-danger.focus,.btn-danger:focus{color:#fff;background-color:rgba(246, 18, 7, 0.92);border-color:rgba(246, 18, 7, 0.92);}
+
+.add{margin-bottom: 20px; margin-right: 32px}
+
+/******** thumbnails ********/
+.thumbnail{background-color: rgba(74, 70, 70, 0.42);border: 1px solid rgba(8, 8, 8, 0.36);border-radius:4px;box-shadow: 0px -1px 16px 3px rgba(105, 98, 98, 0.58)}
+.thumbnail .caption {color: #fff;font-weight: bold;}
+
+/******** Rows ********/
+.row{margin-left: 0px;margin-right: 0px;}
