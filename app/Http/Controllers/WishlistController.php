@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Wishlist;
 use App\User;
-//use Illuminate\Foundation\Auth;
 use Illuminate\Support\Facades\Auth;
 
 use Log;
@@ -13,8 +12,6 @@ class WishlistController extends Controller
     public function index()
     {
         $wishlists = Wishlist::latest()->where('user_id', Auth::user()->id)->paginate(10);
-        //user = new User();
-        //$wishlists = $user->wishlists();
         return view('wishlists.index',compact('wishlists'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -40,14 +37,16 @@ class WishlistController extends Controller
             'author' => 'required',
             'description' => 'required',
             'publishing_company' => 'required',
-            'book_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
+            'book_image' => 'required|image|mimes:png,jpg,JPG'
         ]);
 
         $file = $request->file('book_image');
-        $file->move('/var/www/html/foxtales/public/images', $file->getClientOriginalName());
+        $file->move('public/images/', $file->getClientOriginalName());
+        $fileImage = 'public/images/'.$file->getClientOriginalName();
 
         $store = $request->all();
         $store['user_id'] = Auth::user()->id;
+        $store['book_image'] = $fileImage;
 
         wishlist::create($store);
         return redirect()->route('wishlists.index')
@@ -80,7 +79,7 @@ class WishlistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Wishlist $wishlist)
+    public function update(Request $request, Wishlist $wishlist)
     {
         request()->validate([
             'book_title' => 'required',
@@ -88,6 +87,7 @@ class WishlistController extends Controller
             'description' => 'required',
             'publishing_company' => 'required',
         ]);
+        
         $wishlist->update($request->all());
         return redirect()->route('wishlists.index')
                         ->with('success','Wishlist updated successfully');

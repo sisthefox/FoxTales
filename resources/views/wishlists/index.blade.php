@@ -23,7 +23,7 @@
     <!--<div class="row">-->
         <div class="col-md-3">
               <div class="thumbnail">
-                <img src="{{ $wishlist->book_image}}" alt="não tem imagem nessa porra">
+                <p> <img src="{{ $wishlist->book_image }}" width="150px" height="150px;"></p>
                 <div class="caption">
                   <!--<td>{{ ++$i }}</td>-->
                   <h3 align=center>Book Name: {{ $wishlist->book_title}}</h3>

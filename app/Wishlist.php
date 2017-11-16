@@ -29,4 +29,9 @@ class Wishlist extends Model
 
     }
 
+    public function getBookImageAttribute($book_image){
+
+        return asset($book_image);
+    }
+
 }
