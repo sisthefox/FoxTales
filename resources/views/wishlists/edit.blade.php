@@ -25,7 +25,7 @@
             </ul>
         </div>
     @endif
-    {!! Form::model($wishlist, ['method' => 'PATCH','route' => ['wishlists.update', $wishlist->id]]) !!}
+    {!! Form::model($wishlist, ['method' => 'PATCH','route' => ['wishlists.update', $wishlist->id], 'files' => true]) !!}
         @include('wishlists.form')
     {!! Form::close() !!}
 @endsection

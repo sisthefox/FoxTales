@@ -42,6 +42,12 @@
                   {{ $wishlist->publishing_company}}
               </div>
           </div>
+           <div class="col-xs-12 col-sm-12 col-md-12">
+              <div class="form-group">
+                  <strong>Classification:</strong>
+                  {{ $wishlist->classification}}
+              </div>
+          </div>
           <div>
               @foreach ($wishlist->comments as $comment)
 

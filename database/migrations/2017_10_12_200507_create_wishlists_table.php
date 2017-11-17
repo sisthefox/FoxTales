@@ -17,6 +17,7 @@ class CreateWishlistsTable extends Migration
            $table->text('description');
            $table->string('author');
            $table->string('publishing_company');
+           $table->integer('classification');
            $table->string('book_image');
            $table->unsignedInteger('user_id')->nullable();          
            $table->timestamps();

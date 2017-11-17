@@ -37,7 +37,8 @@ class WishlistController extends Controller
             'author' => 'required',
             'description' => 'required',
             'publishing_company' => 'required',
-            'book_image' => 'required|image|mimes:png,jpg,JPG'
+            'classification' => 'required',
+            'book_image' => 'required|image|mimes:png,jpg,JPG'            
         ]);
 
         $file = $request->file('book_image');
@@ -86,9 +87,19 @@ class WishlistController extends Controller
             'author' => 'required',
             'description' => 'required',
             'publishing_company' => 'required',
+            'classification' => 'required'
         ]);
+
+        $file = $request->file('book_image');
         
-        $wishlist->update($request->all());
+        $file->move('public/images/', $file->getClientOriginalName());
+        $fileImage = 'public/images/'.$file->getClientOriginalName();
+       
+        $store = $request->all();
+        $store['user_id'] = Auth::user()->id;
+        $store['book_image'] = $fileImage;
+
+        $wishlist->update($store);
         return redirect()->route('wishlists.index')
                         ->with('success','Wishlist updated successfully');
     }

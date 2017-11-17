@@ -23,7 +23,13 @@
               <strong><h4>Publishing Company:</h3></strong>
               {!! Form::text('publishing_company', null, array('placeholder' => 'Publishing Company','class' => 'form-control')) !!}
           </div>
-      </div>
+       </div>
+       <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="form-group">
+              <strong><h4>Classification:</h3></strong>
+              {!! Form::text('classification', null, array('placeholder' => 'Classification','class' => 'form-control')) !!}
+          </div>
+       </div>
          <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="form-group">
               <label for="book_image">Image: </label>

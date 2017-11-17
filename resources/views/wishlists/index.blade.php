@@ -30,6 +30,7 @@
                   <p>Author: {{ $wishlist->author}}</p>
                   <p>Descritption: {{ $wishlist->description}}</p>
                   <p>Publishing Company: {{ $wishlist->publishing_company }}</p>
+                  <p>Classification: {{ $wishlist->classification }}</p>
                   <div align=right>
                       <!--<a class="btn btn-info" href="{{ route('wishlists.show',$wishlist->id) }}">Show</a>-->
                       <a class="btn btn-primary" href="{{ route('wishlists.edit',$wishlist->id) }}">Edit</a>
