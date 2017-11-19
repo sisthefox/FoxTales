@@ -23,9 +23,31 @@ Route::resource('members','MemberController');
 
 Route::resource('wishlists','WishlistController');
 
+Route::resource('trades','TradeController');
+
 //Route::get('auth.myaccount', 'MyAccountController@index')->name('myaccount');
 
 Route::resource('myaccount','MyAccountController');
+
+Route::get('/results', function(){
+	
+	//lista todos os livros dos usuários
+	//$trades = \App\Trade::where('user_id','<>', Auth::user()->id)->get();
+	//select * from trades where book_title like '%trade%' and user_id<>6
+	//$trades = DB::table('trades')->where([
+	
+
+	$trades = \App\Trade::where([
+		['book_title','like', '%' . request('query'). '%'],
+		['user_id','<>', Auth::user()->id],
+	])->get();	
+		
+	return view('results')->with('trades', $trades)
+						  ->with('book_title', 'Search Results: '. request('query'))
+						  ->with('settings')
+						  ->with('query', request('quey'));
+						
+});
 
 
 

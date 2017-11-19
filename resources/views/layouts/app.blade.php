@@ -45,6 +45,13 @@
                             &nbsp;
                         @endif
                     </ul>
+					 <ul class="nav navbar-nav">
+                        @if (!Auth::guest())
+                            <!--<li><a href="{{ url('trades') }}">Wishlist</a></li>-->
+                            <li><a href="{{ route('trades.index') }}">Trade</a></li>
+                            &nbsp;
+                        @endif
+                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
