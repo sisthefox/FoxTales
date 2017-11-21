@@ -42,13 +42,7 @@
                   {{ $trade->publishing_company}}
               </div>
           </div>
-		  <div class="col-xs-12 col-sm-12 col-md-12">
-              <div class="form-group">
-                  <strong>User</strong>
-                  {{ $user->name}}
-              </div>
-          </div>
-          <div>
+		  <div>
               @foreach ($trade->comments as $comment)
 
                 <article>

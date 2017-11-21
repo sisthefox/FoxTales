@@ -20,12 +20,12 @@ class CreateTradesTable extends Migration
             $table->string('author');
             $table->string('publishing_company');
             $table->string('book_image');
-			$table->string('user_name')->nullable(); 
-            $table->unsignedInteger('user_id')->nullable();          
+			$table->unsignedInteger('user_id')->nullable();    
+			
 			$table->timestamps();
            
-            $table->foreign('user_id')->references('id')->on('users')->on_update('cascade')->on_delete('cascade');
-			$table->foreign('user_name')->references('name')->on('users')->on_update('cascade')->on_delete('cascade');
+		    $table->foreign('user_id')->references('id')->on('users')->on_update('cascade')->on_delete('cascade');			
+		   
         });
     }
 

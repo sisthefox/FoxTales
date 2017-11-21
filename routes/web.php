@@ -29,7 +29,7 @@ Route::resource('trades','TradeController');
 
 Route::resource('myaccount','MyAccountController');
 
-Route::get('/results', function(){
+Route::get('traderesults', function(){
 	
 	//lista todos os livros dos usuários
 	//$trades = \App\Trade::where('user_id','<>', Auth::user()->id)->get();
@@ -42,7 +42,7 @@ Route::get('/results', function(){
 		['user_id','<>', Auth::user()->id],
 	])->get();	
 		
-	return view('results')->with('trades', $trades)
+	return view('traderesults')->with('trades', $trades)
 						  ->with('book_title', 'Search Results: '. request('query'))
 						  ->with('settings')
 						  ->with('query', request('quey'));
