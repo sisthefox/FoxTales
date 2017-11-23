@@ -25,7 +25,9 @@
                   <p>Author: {{ $trade->author}}</p>
                   <p>Descritption: {{ $trade->description}}</p>
                   <p>Publishing Company: {{ $trade->publishing_company }}</p>
+
 				          <p>User: {{ $trade->name }}</p>
+
               
                 </div>
             </div>
@@ -46,6 +48,7 @@
               <button type="submit" class="btn btn-success">Submit</button>
       </div>
   </div>
+
 
     
 @endsection

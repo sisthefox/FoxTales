@@ -30,7 +30,11 @@
                   <p>Author: {{ $trade->author}}</p>
                   <p>Descritption: {{ $trade->description}}</p>
                   <p>Publishing Company: {{ $trade->publishing_company }}</p>
+
 				         <p>User: {{ $trade->user_id }}</p>
+
+				  <p>User: {{ $trade->user_id }}</p>
+
                   
                   <div align=right>
                       
@@ -44,7 +48,10 @@
         </div>
     </div>
     @endforeach
+
    
+
+
   </div>
     {!! $trades->render() !!}
 <div class="overlay_search">

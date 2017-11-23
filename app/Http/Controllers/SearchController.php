@@ -12,6 +12,7 @@ use Log;
 class SearchController extends Controller
 {
     public function index()
+
 	{
          
          $trades = \App\Trade::join('users', 'trades.user_id', '=', 'users.id')->where([
@@ -24,4 +25,5 @@ class SearchController extends Controller
          					  ->with('settings')
          					  ->with('query', request('quey'));
 	}	
+
 }
