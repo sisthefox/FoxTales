@@ -7,9 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
 
-	public function post(){
+	protected $fillable = [
+        'comment',
+        'body',
+        'book_id'        
+    ];
 
-		return $this->belongsTo('App\Wishlist');
-	}
+    
+    public function Trade()
+    {
+
+    	return $this->belongsTo('App\Trade');
+    
+    	
+    }
+   
 
 }

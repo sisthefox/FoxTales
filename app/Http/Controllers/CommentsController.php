@@ -1,18 +1,20 @@
 <?php
+
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Wishlist;
+use App\Comment;
 use App\User;
+use App\Trade;
 use Illuminate\Support\Facades\Auth;
 
 use Log;
 
-class WishlistController extends Controller
+class CommentsController extends Controller
 {
-    public function index()
+     public function index()
     {
-        $wishlists = Wishlist::latest()->where('user_id', Auth::user()->id)->paginate(10);
-        return view('wishlists.index',compact('wishlists'))
+        $trades = Comment::latest()->where('book_id')->paginate(10);
+        return view('trades.index',compact('trades'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     /**
@@ -22,7 +24,7 @@ class WishlistController extends Controller
      */
     public function create()
     {
-        return view('wishlists.create');
+        return view('trades.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -33,24 +35,18 @@ class WishlistController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'book_title' => 'required',
-            'author' => 'required',
-            'description' => 'required',
-            'publishing_company' => 'required',
-            'classification' => 'required'
-            //'book_image' => 'required|image|mimes:png,jpg,JPG'            
+            'comment' => 'required',
+            'body' => 'required'
+            
         ]);
 
-        $file = $request->file('book_image');
-        $file->move('public/images/', $file->getClientOriginalName());
-        $fileImage = 'public/images/'.$file->getClientOriginalName();
-
+        
         $store = $request->all();
-        $store['user_id'] = Auth::user()->id;
-        $store['book_image'] = $fileImage;
+        $store['book_id'] = $book_id->id;
+     
 
-        wishlist::create($store);
-        return redirect()->route('wishlists.index')
+        Comment::create($store);
+        return redirect()->route('trades.index')
                         ->with('success','Book created successfully');
     }
     /**
@@ -59,9 +55,9 @@ class WishlistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Wishlist $wishlist)
+    public function show(Trade $trade)
     {
-        return view('wishlists.show',compact('wishlist'));
+        return view('trades.show',compact('trade'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -69,9 +65,9 @@ class WishlistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Wishlist $wishlist)
+    public function edit(Trade $trade)
     {
-        return view('wishlists.edit',compact('wishlist'));
+        return view('trades.edit',compact('trade'));
     }
     /**
      * Update the specified resource in storage.
@@ -80,14 +76,13 @@ class WishlistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Wishlist $wishlist)
+    public function update(Request $request, Trade $trade)
     {
         request()->validate([
             'book_title' => 'required',
             'author' => 'required',
             'description' => 'required',
-            'publishing_company' => 'required',
-            'classification' => 'required'
+            'publishing_company' => 'required'
         ]);
 
         $file = $request->file('book_image');
@@ -99,8 +94,8 @@ class WishlistController extends Controller
         $store['user_id'] = Auth::user()->id;
         $store['book_image'] = $fileImage;
 
-        $wishlist->update($store);
-        return redirect()->route('wishlists.index')
+        $trade->update($store);
+        return redirect()->route('trades.index')
                         ->with('success','Wishlist updated successfully');
     }
     /**
@@ -111,8 +106,8 @@ class WishlistController extends Controller
      */
     public function destroy($id)
     {
-        Wishlist::destroy($id);
-        return redirect()->route('wishlists.index')
-                        ->with('success','Wishlist deleted successfully');
+        Trade::destroy($id);
+        return redirect()->route('trades.index')
+                        ->with('success','Trade deleted successfully');
     }
 }

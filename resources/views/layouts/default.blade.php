@@ -30,7 +30,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/home') }}">
                         {{ config('app.name', 'FoxTales') }}
                     </a>
                 </div>
@@ -40,6 +40,12 @@
                     <ul class="nav navbar-nav">
                         @if (!Auth::guest())
                             <li><a href="{{ url('wishlists') }}">Wishlist</a></li>
+                            &nbsp;
+                        @endif
+                    </ul>
+					<ul class="nav navbar-nav">
+                        @if (!Auth::guest())
+                            <li><a href="{{ url('trades') }}">Trade</a></li>
                             &nbsp;
                         @endif
                     </ul>

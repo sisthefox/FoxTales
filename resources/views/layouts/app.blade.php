@@ -31,7 +31,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/home') }}">
                         {{ config('app.name', 'FoxTales') }}
                     </a>
                 </div>
@@ -42,6 +42,13 @@
                         @if (!Auth::guest())
                             <!--<li><a href="{{ url('wishlists') }}">Wishlist</a></li>-->
                             <li><a href="{{ route('wishlists.index') }}">Wishlist</a></li>
+                            &nbsp;
+                        @endif
+                    </ul>
+					 <ul class="nav navbar-nav">
+                        @if (!Auth::guest())
+                            <!--<li><a href="{{ url('trades') }}">Wishlist</a></li>-->
+                            <li><a href="{{ route('trades.index') }}">Trade</a></li>
                             &nbsp;
                         @endif
                     </ul>

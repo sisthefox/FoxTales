@@ -23,9 +23,13 @@ Route::resource('members','MemberController');
 
 Route::resource('wishlists','WishlistController');
 
+Route::resource('trades','TradeController');
+
 //Route::get('auth.myaccount', 'MyAccountController@index')->name('myaccount');
 
 Route::resource('myaccount','MyAccountController');
 
+Route::resource('traderesults','SearchController');
 
+Route::resource('comments','CommentsController');
 
