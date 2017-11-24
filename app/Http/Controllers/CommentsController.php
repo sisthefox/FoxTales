@@ -14,7 +14,7 @@ class CommentsController extends Controller
      public function index()
     {
         $trades = Comment::latest()->where('book_id')->paginate(10);
-        return view('trades.index',compact('trades'))
+        return view('comments.index',compact('comments'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     /**
@@ -24,7 +24,7 @@ class CommentsController extends Controller
      */
     public function create()
     {
-        return view('trades.create');
+        return view('comments.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -46,7 +46,7 @@ class CommentsController extends Controller
      
 
         Comment::create($store);
-        return redirect()->route('trades.index')
+        return redirect()->route('comments.index')
                         ->with('success','Book created successfully');
     }
     /**
@@ -57,7 +57,7 @@ class CommentsController extends Controller
      */
     public function show(Trade $trade)
     {
-        return view('trades.show',compact('trade'));
+        return view('comments.show',compact('comment'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -67,7 +67,7 @@ class CommentsController extends Controller
      */
     public function edit(Trade $trade)
     {
-        return view('trades.edit',compact('trade'));
+        return view('comments.edit',compact('trade'));
     }
     /**
      * Update the specified resource in storage.
@@ -95,7 +95,7 @@ class CommentsController extends Controller
         $store['book_image'] = $fileImage;
 
         $trade->update($store);
-        return redirect()->route('trades.index')
+        return redirect()->route('comments.index')
                         ->with('success','Wishlist updated successfully');
     }
     /**
@@ -107,7 +107,7 @@ class CommentsController extends Controller
     public function destroy($id)
     {
         Trade::destroy($id);
-        return redirect()->route('trades.index')
+        return redirect()->route('comments.index')
                         ->with('success','Trade deleted successfully');
     }
 }

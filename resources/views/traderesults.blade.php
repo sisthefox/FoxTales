@@ -27,7 +27,7 @@
                   <p>Publishing Company: {{ $trade->publishing_company }}</p>
 
 				          <p>User: {{ $trade->name }}</p>
-
+                   <a class="btn btn-primary" href="{{ route('comments.create',$trade->id) }}">comment</a>
               
                 </div>
             </div>
@@ -36,19 +36,7 @@
     @endforeach
   </div>
 
-  <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-              <strong><h4>Comment:</h4></strong>
-              {!! Form::text('comment', null, array('placeholder' => 'Comment','class' => 'form-control')) !!}
-          </div>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <form method="GET" action="/CommentsController">
-              <button type="submit" class="btn btn-success">Submit</button>
-      </div>
-  </div>
-
+  
 
     
 @endsection

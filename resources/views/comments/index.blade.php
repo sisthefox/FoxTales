@@ -3,13 +3,13 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Books Trade</h2>
+                <h2>Comments Index</h2>
             </div>
         </div>
     </div>
     <div class="row">
       <div class="pull-right add">
-          <a class="btn btn-success" href="{{ route('trades.create') }}"> Add a new book</a>
+          <a class="btn btn-success" href="{{ route('comments.create') }}"> Add a new book</a>
       </div>
     </div>
 
