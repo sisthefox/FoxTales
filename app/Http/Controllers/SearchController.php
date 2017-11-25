@@ -14,16 +14,17 @@ class SearchController extends Controller
     public function index()
 
 	{
-         
-         $trades = \App\Trade::join('users', 'trades.user_id', '=', 'users.id')->where([
+		  $trades = \App\Trade::with('User', 'Comment')->where([
          	['book_title','like', '%' . request('query'). '%'],
          	['user_id','<>', Auth::user()->id],
          ])->get();
-
+		 		 
+		Log::info(print_r($trades, true));
+				 
          return view('traderesults')->with('trades', $trades)
          					  ->with('book_title', 'Search Results: '. request('query'))
          					  ->with('settings')
-         					  ->with('query', request('quey'));
+         					  ->with('query', request('query'));
 	}	
 
 }

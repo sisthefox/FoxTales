@@ -11,20 +11,28 @@ use Log;
 
 class CommentsController extends Controller
 {
-     public function index()
+     public function index(Request $request)
     {
-        $trades = Comment::latest()->where('book_id')->paginate(10);
-        return view('comments.index',compact('comments'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+		 $trades = \App\Trade::with('User', 'Comment')->where([
+         	['book_title','like', '%' . request('query'). '%'],
+         	['user_id','<>', Auth::user()->id],
+         ])->get();
+		 		 				
+		Log::info(print_r($trades, true));
+								
+         return view('traderesults')->with('trades', $trades)
+         					  ->with('book_title', 'Search Results: '. request('query'))
+         					  ->with('settings')
+         					  ->with('query', request('query'));
     }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('comments.create');
+        return view('comments.create')->with($request->all());
     }
     /**
      * Store a newly created resource in storage.
@@ -35,16 +43,12 @@ class CommentsController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'comment' => 'required',
-            'body' => 'required'
-            
+            'comment' => 'required',            
         ]);
-
         
         $store = $request->all();
-        $store['book_id'] = $book_id->id;
-     
-
+		$store['user_id'] = Auth::user()->id;
+     	 
         Comment::create($store);
         return redirect()->route('comments.index')
                         ->with('success','Book created successfully');

@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('comments.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('comments.index', ['trade_id' => $trade_id]) }}"> Back</a>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
     @endif
     <div>
         {{ csrf_field() }}
-      {!! Form::open(array('route' => 'comments.store','method'=>'POST','enctype' => 'multipart/form-data', 'files' => true)) !!}
+      {!! Form::open(['method'=>'POST', 'route' => ['comments.store', 'trade_id' => $trade_id ]]) !!}
            @include('comments.form')
       {!! Form::close() !!}
     </div>

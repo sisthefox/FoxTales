@@ -9,8 +9,8 @@ class Comment extends Model
 
 	protected $fillable = [
         'comment',
-        'body',
-        'book_id'        
+        'trade_id',
+		'user_id'	
     ];
 
     

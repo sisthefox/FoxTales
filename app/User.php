@@ -35,4 +35,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Wishlist', 'user_id', 'id');
 
     }
+	
+	  public function trade()
+    {
+
+        return $this->hasMany('App\Trade', 'user_id', 'id');
+
+    }
 }

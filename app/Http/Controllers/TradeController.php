@@ -38,7 +38,7 @@ class TradeController extends Controller
             'author' => 'required',
             'description' => 'required',
             'publishing_company' => 'required',
-            //'book_image' => 'required|image|mimes:png,jpg,JPG'            
+            //'book_image' => 'required|image|mimes:png,jpg'            
         ]);
 
         $file = $request->file('book_image');
