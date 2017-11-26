@@ -31,5 +31,11 @@ Route::resource('myaccount','MyAccountController');
 
 Route::resource('traderesults','SearchController');
 
+Route::resource('reviewresults','SearchReviewController');
+
 Route::resource('comments','CommentsController');
+
+Route::resource('reviewcomments','ReviewCommentsController');
+
+Route::resource('reviews','ReviewController');
 

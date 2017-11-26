@@ -49,6 +49,12 @@
                             &nbsp;
                         @endif
                     </ul>
+					<ul class="nav navbar-nav">
+                        @if (!Auth::guest())
+                            <li><a href="{{ url('reviews') }}">Review</a></li>
+                            &nbsp;
+                        @endif
+                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">

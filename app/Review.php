@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class trade extends Model
+class Review extends Model
 {
-       protected $fillable = [
+      protected $fillable = [
         'book_title',
         'author',
         'description', 
@@ -23,7 +23,7 @@ class trade extends Model
 
     public function Comment(){
 
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('App\ReviewComment');
 
     }
 
