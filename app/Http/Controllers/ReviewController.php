@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Review;
 use App\User;
+use DB;
+use App\Quotation;
 use Illuminate\Support\Facades\Auth;
 
 use Log;
@@ -51,7 +53,7 @@ class ReviewController extends Controller
 
         Review::create($store);
         return redirect()->route('reviews.index')
-                        ->with('success','Book created successfully');
+                        ->with('success','Book was created successfully');
     }
     /**
      * Display the specified resource.
@@ -100,7 +102,7 @@ class ReviewController extends Controller
 
         $review->update($store);
         return redirect()->route('reviews.index')
-                        ->with('success','Wishlist updated successfully');
+                        ->with('success','Book was updated successfully');
     }
     /**
      * Remove the specified resource from storage.
@@ -108,10 +110,12 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id)    
     {
+        DB::table('review_comments')->where('review_id','=',$id)->delete();
+
         Review::destroy($id);
         return redirect()->route('reviews.index')
-                        ->with('success','Trade deleted successfully');
+                        ->with('success','Book was deleted successfully');
     }
 }

@@ -2,9 +2,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use willvincent\Rateable\Rateable;
 
 class Wishlist extends Model
 {
+    
     protected $fillable = [
         'book_title',
         'author',
@@ -16,6 +18,8 @@ class Wishlist extends Model
     ];
 
     
+    use Rateable;
+
     public function User()
     {
 
@@ -34,5 +38,7 @@ class Wishlist extends Model
 
         return asset($book_image);
     }
+
+
 
 }

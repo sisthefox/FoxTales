@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('trades.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('trades.index') }}"><span class="glyphicon glyphicon-chevron-left"></span> Back</a>
             </div>
         </div>
     </div>

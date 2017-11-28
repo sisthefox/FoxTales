@@ -179,6 +179,8 @@ return [
         
         Collective\Html\HtmlServiceProvider::class,
 
+        willvincent\Rateable\RateableServiceProvider::class,
+
 
     ],
 

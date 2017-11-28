@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('reviews.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('reviews.index') }}"><span class="glyphicon glyphicon-chevron-left"></span> Back</a>
             </div>
         </div>
     </div>

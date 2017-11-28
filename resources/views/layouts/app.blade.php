@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/toastr.min.css')}}" rel="stylesheet">
 
 
 </head>
@@ -59,6 +60,13 @@
                             &nbsp;
                         @endif
                     </ul>
+                     <ul class="nav navbar-nav">
+                        @if (!Auth::guest())
+                            <!--<li><a href="{{ url('trades') }}">Wishlist</a></li>-->
+                            <li><a href="{{ route('sales.index') }}">Sales</a></li>
+                            &nbsp;
+                        @endif
+                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
@@ -100,5 +108,14 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script>
+      @if (Session::has('success'))
+
+          toastr.success("{{ Session::get('Success')}}")
+
+      @endif
+    </script>
+
 </body>
 </html>

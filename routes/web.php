@@ -39,3 +39,11 @@ Route::resource('reviewcomments','ReviewCommentsController');
 
 Route::resource('reviews','ReviewController');
 
+Route::resource('sales','SaleController');
+
+Route::resource('salescomments','SaleCommentsController');
+
+Route::resource('salesresults','SearchSaleController');
+
+
+

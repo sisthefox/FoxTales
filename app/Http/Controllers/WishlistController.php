@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use App\Wishlist;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Session;
+
 
 use Log;
 
@@ -38,7 +40,7 @@ class WishlistController extends Controller
             'description' => 'required',
             'publishing_company' => 'required',
             'classification' => 'required'
-            //'book_image' => 'required|image|mimes:png,jpg,JPG'            
+            //'book_image' => 'required|image|mimes:png,jpg,JPG'
         ]);
 
         $file = $request->file('book_image');
@@ -50,8 +52,9 @@ class WishlistController extends Controller
         $store['book_image'] = $fileImage;
 
         wishlist::create($store);
-        return redirect()->route('wishlists.index')
-                        ->with('success','Book created successfully');
+        Session::flash('success','Book created successfully');
+        return redirect()->route('wishlists.index');
+                        //->with('success','Book created successfully');
     }
     /**
      * Display the specified resource.
@@ -91,17 +94,18 @@ class WishlistController extends Controller
         ]);
 
         $file = $request->file('book_image');
-        
+
         $file->move('public/images/', $file->getClientOriginalName());
         $fileImage = 'public/images/'.$file->getClientOriginalName();
-       
+
         $store = $request->all();
         $store['user_id'] = Auth::user()->id;
         $store['book_image'] = $fileImage;
 
         $wishlist->update($store);
-        return redirect()->route('wishlists.index')
-                        ->with('success','Wishlist updated successfully');
+        Session::flash('success','Book updated successfully');
+        return redirect()->route('wishlists.index');
+                      //  ->with('success','Wishlist updated successfully');
     }
     /**
      * Remove the specified resource from storage.
@@ -112,7 +116,25 @@ class WishlistController extends Controller
     public function destroy($id)
     {
         Wishlist::destroy($id);
-        return redirect()->route('wishlists.index')
-                        ->with('success','Wishlist deleted successfully');
+        Session::flash('success', 'Book deleted successfully');
+        return redirect()->route('wishlists.index');
+                      //  ->with('success','Wishlist deleted successfully');
     }
+
+    public function postPost(Request $request)
+    {
+        request()->validate(['rate' => 'required']);
+        $wishlist = Wishlist::find($request->id);
+
+        $rating = new \willvincent\Rateable\Rating;
+        $rating->rating = $request->rate;
+        $rating->user_id = auth()->user()->id;
+
+        $post->ratings()->save($rating);
+
+        return redirect()->route("wishlists.index");
+    }
+
+
+
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Trade;
 use App\User;
+use DB;
+use App\Quotation;
 use Illuminate\Support\Facades\Auth;
 
 use Log;
@@ -110,6 +112,9 @@ class TradeController extends Controller
      */
     public function destroy($id)
     {
+           
+        DB::table('comments')->where('trade_id','=',$id)->delete();
+        
         Trade::destroy($id);
         return redirect()->route('trades.index')
                         ->with('success','Trade deleted successfully');

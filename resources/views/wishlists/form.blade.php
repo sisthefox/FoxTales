@@ -27,6 +27,7 @@
        <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="form-group">
               <strong><h4>Classification:</h3></strong>
+               
               {!! Form::text('classification', null, array('placeholder' => 'Classification','class' => 'form-control')) !!}
           </div>
        </div>

@@ -2,38 +2,48 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Books Wishlist</h2>
+            <div class="page-header">
+                <h2>Wishlist</h2>
             </div>
         </div>
     </div>
     <div class="row">
       <div class="pull-right add">
-          <a class="btn btn-success" href="{{ route('wishlists.create') }}"> Add a new book</a>
+          <a class="btn btn-success" href="{{ route('wishlists.create') }}"><span class="glyphicon glyphicon-plus"></span> Add a new book</a>
       </div>
     </div>
 
-    @if ($message = Session::get('success'))
+    <!--@if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
-    @endif
+    @endif-->
 
     @foreach ($wishlists as $wishlist)
     <!--<div class="row">-->
         <div class="col-md-3">
               <div class="thumbnail">
-                <p> <img src="{{ $wishlist->book_image }}" width="150px" height="150px;"></p>
+                <div class="text-center"> <img src="{{ $wishlist->book_image }}" class="img-thumbnail" width="150px"></div>
                 <div class="caption">
                   <!--<td>{{ ++$i }}</td>-->
-                  <h3 align=center>Book Name: {{ $wishlist->book_title}}</h3>
+
+                  <h3 align=center>{{ $wishlist->book_title}}</h3>
                   <p>Author: {{ $wishlist->author}}</p>
-                  <p>Descritption: {{ $wishlist->description}}</p>
+                  <p data-toggle="collapse" data-target="#descritption{{ $wishlist->book_title}}">Descritption <span class="caret"></span></p>
+                  <div id="descritption{{ $wishlist->book_title}}" class="collapse">
+
+                    <p>{{ $wishlist->description}}</p>
+
+
+                  </div>
                   <p>Publishing Company: {{ $wishlist->publishing_company }}</p>
-                  <p>Classification: {{ $wishlist->classification }}</p>
+
+                  <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $wishlist->classification }}" data-size="xs" disabled="">
                   <div align=right>
+
+
                       <!--<a class="btn btn-info" href="{{ route('wishlists.show',$wishlist->id) }}">Show</a>-->
-                      <a class="btn btn-primary" href="{{ route('wishlists.edit',$wishlist->id) }}">Edit</a>
+                      <a class="btn btn-primary" href="{{ route('wishlists.edit',$wishlist->id) }}"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
                       {!! Form::open(['method' => 'DELETE','route' => ['wishlists.destroy', $wishlist->id],'style'=>'display:inline']) !!}
                       {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                       {!! Form::close() !!}
@@ -44,5 +54,19 @@
     </div>
     @endforeach
   </div>
+
     {!! $wishlists->render() !!}
+    <script type="text/javascript">
+        $("#input-id").rating();
+    </script>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
+
+
+
+
 @endsection
