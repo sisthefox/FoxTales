@@ -39,8 +39,8 @@ class WishlistController extends Controller
             'author' => 'required',
             'description' => 'required',
             'publishing_company' => 'required',
-            'classification' => 'required'
-            //'book_image' => 'required|image|mimes:png,jpg,JPG'
+            'classification' => 'required|integer|max:5',
+            'book_image' => 'required|image|mimes:png,jpg,JPG'
         ]);
 
         $file = $request->file('book_image');

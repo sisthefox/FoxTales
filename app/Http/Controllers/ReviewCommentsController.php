@@ -6,6 +6,7 @@ use App\ReviewComment;
 use App\User;
 use App\Review;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 use Log;
 
@@ -17,9 +18,9 @@ class ReviewCommentsController extends Controller
          	['book_title','like', '%' . request('query'). '%'],
          	['user_id','<>', Auth::user()->id],
          ])->get();
-		 		 				
-		
-								
+
+
+
          return view('reviewresults')->with('reviews', $reviews)
          					  ->with('book_title', 'Search Results: '. request('query'))
          					  ->with('settings')
@@ -43,15 +44,16 @@ class ReviewCommentsController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'comment' => 'required',            
+            'comment' => 'required',
         ]);
-        
+
         $store = $request->all();
-		$store['user_id'] = Auth::user()->id;
-     	 
+		    $store['user_id'] = Auth::user()->id;
+
         ReviewComment::create($store);
-        return redirect()->route('reviewcomments.index')
-                        ->with('success','Commente created successfully');
+        Session::flash('success','Commente created successfully');
+        return redirect()->route('reviewcomments.index');
+                        //->with('success','Commente created successfully');
     }
     /**
      * Display the specified resource.
@@ -90,17 +92,18 @@ class ReviewCommentsController extends Controller
         ]);
 
         $file = $request->file('book_image');
-        
+
         $file->move('public/images/', $file->getClientOriginalName());
         $fileImage = 'public/images/'.$file->getClientOriginalName();
-       
+
         $store = $request->all();
         $store['user_id'] = Auth::user()->id;
         $store['book_image'] = $fileImage;
 
         $trade->update($store);
-        return redirect()->route('comments.index')
-                        ->with('success','Wishlist updated successfully');
+        Session::flash('success','Commente updated successfully');
+        return redirect()->route('comments.index');
+                        //->with('success','Wishlist updated successfully');
     }
     /**
      * Remove the specified resource from storage.
@@ -110,8 +113,11 @@ class ReviewCommentsController extends Controller
      */
     public function destroy($id)
     {
+        DB::table('review_comments')->where('review_id','=',$id)->delete();
+
         Review::destroy($id);
-        return redirect()->route('review.index')
-                        ->with('success','Trade deleted successfully');
+        Session::flash('success','Commente updated successfully');
+        return redirect()->route('review.index');
+                        //->with('success','Trade deleted successfully');
     }
 }

@@ -11,6 +11,7 @@ class Sale extends Model
         'author',
         'description', 
         'publishing_company', 
+        'sale_price', 
         'book_image', 
         'user_id',
     ];

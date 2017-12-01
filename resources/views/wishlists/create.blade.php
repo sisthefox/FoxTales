@@ -3,15 +3,15 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Add New Book</h2>
+                <h2>Add a New Book</h2>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('wishlists.index') }}"><span class="glyphicon glyphicon-chevron-left"></span> Back</a>
-                
+                <a class="btn btn-primary" href="{{ route('wishlists.index') }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Books Trade</h2>
+                <h2>Trades From Another Users<</h2>
             </div>
         </div>
     </div>

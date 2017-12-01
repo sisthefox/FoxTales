@@ -7,6 +7,7 @@ use App\User;
 use DB;
 use App\Quotation;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 use Log;
 
@@ -40,7 +41,7 @@ class TradeController extends Controller
             'author' => 'required',
             'description' => 'required',
             'publishing_company' => 'required',
-            //'book_image' => 'required|image|mimes:png,jpg'            
+            'book_image' => 'required|image|mimes:png,jpg'
         ]);
 
         $file = $request->file('book_image');
@@ -52,8 +53,9 @@ class TradeController extends Controller
         $store['book_image'] = $fileImage;
 
         Trade::create($store);
-        return redirect()->route('trades.index')
-                        ->with('success','Book created successfully');
+        Session::flash('success','Book created successfully');
+        return redirect()->route('trades.index');
+                        //->with('success','Book created successfully');
     }
     /**
      * Display the specified resource.
@@ -92,17 +94,18 @@ class TradeController extends Controller
         ]);
 
         $file = $request->file('book_image');
-        
+
         $file->move('public/images/', $file->getClientOriginalName());
         $fileImage = 'public/images/'.$file->getClientOriginalName();
-       
+
         $store = $request->all();
         $store['user_id'] = Auth::user()->id;
         $store['book_image'] = $fileImage;
 
         $trade->update($store);
-        return redirect()->route('trades.index')
-                        ->with('success','Wishlist updated successfully');
+        Session::flash('success','Book updated successfully');
+        return redirect()->route('trades.index');
+                        //->with('success','Wishlist updated successfully');
     }
     /**
      * Remove the specified resource from storage.
@@ -112,11 +115,12 @@ class TradeController extends Controller
      */
     public function destroy($id)
     {
-           
+
         DB::table('comments')->where('trade_id','=',$id)->delete();
-        
+
         Trade::destroy($id);
-        return redirect()->route('trades.index')
-                        ->with('success','Trade deleted successfully');
+        Session::flash('success', 'Book deleted successfully');
+        return redirect()->route('trades.index');
+                        //->with('success','Trade deleted successfully');
     }
 }

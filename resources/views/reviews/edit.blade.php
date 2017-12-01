@@ -4,14 +4,14 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit Book</h2>
+                <h2>Edit a Review</h2>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('reviews.index') }}"><span class="glyphicon glyphicon-chevron-left"></span> Back</a>
+                <a class="btn btn-primary" href="{{ route('reviews.index') }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
             </div>
         </div>
     </div>

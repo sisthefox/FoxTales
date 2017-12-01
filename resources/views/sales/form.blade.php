@@ -26,7 +26,13 @@
        </div>
        <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="form-group">
-              <label for="book_image">Image: </label>
+              <strong><h4>Price:</h3></strong>
+              {!! Form::text('sale_price', null, array('placeholder' => 'Sale Price','class' => 'form-control')) !!}
+          </div>
+       </div>
+       <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="form-group">
+              <label for="book_image">Please Set an Image: </label>
               
               {!! Form::file('book_image', null, array('placeholder' => 'BookImage', 'class' => 'image')) !!}
 

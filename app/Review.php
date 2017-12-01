@@ -11,6 +11,7 @@ class Review extends Model
         'author',
         'description', 
         'publishing_company', 
+        'classification',
         'book_image', 
         'user_id',
     ];

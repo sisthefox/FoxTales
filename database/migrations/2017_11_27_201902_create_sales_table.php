@@ -20,6 +20,7 @@ class CreateSalesTable extends Migration
             $table->string('author');
             $table->string('publishing_company');
             $table->string('book_image');
+            $table->float('sale_price');
             $table->unsignedInteger('user_id')->nullable();    
             
             $table->timestamps();

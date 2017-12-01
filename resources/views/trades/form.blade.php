@@ -26,7 +26,7 @@
        </div>
          <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="form-group">
-              <label for="book_image">Image: </label>
+              <label for="book_image">Please Set an Image (all the time):  </label>
               
               {!! Form::file('book_image', null, array('placeholder' => 'BookImage', 'class' => 'image')) !!}
 

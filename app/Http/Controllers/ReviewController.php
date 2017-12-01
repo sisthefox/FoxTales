@@ -7,6 +7,8 @@ use App\User;
 use DB;
 use App\Quotation;
 use Illuminate\Support\Facades\Auth;
+use Session;
+
 
 use Log;
 
@@ -40,7 +42,8 @@ class ReviewController extends Controller
             'author' => 'required',
             'description' => 'required',
             'publishing_company' => 'required',
-            //'book_image' => 'required|image|mimes:png,jpg'            
+            'classification' => 'required|integer|max:5',
+            'book_image' => 'required|image|mimes:png,jpg'
         ]);
 
         $file = $request->file('book_image');
@@ -52,8 +55,9 @@ class ReviewController extends Controller
         $store['book_image'] = $fileImage;
 
         Review::create($store);
-        return redirect()->route('reviews.index')
-                        ->with('success','Book was created successfully');
+        Session::flash('success','Book was created successfully');
+        return redirect()->route('reviews.index');
+                        //->with('success','Book was created successfully');
     }
     /**
      * Display the specified resource.
@@ -88,21 +92,23 @@ class ReviewController extends Controller
             'book_title' => 'required',
             'author' => 'required',
             'description' => 'required',
+            'classification' => 'required|integer|max:5',
             'publishing_company' => 'required'
         ]);
 
         $file = $request->file('book_image');
-        
+
         $file->move('public/images/', $file->getClientOriginalName());
         $fileImage = 'public/images/'.$file->getClientOriginalName();
-       
+
         $store = $request->all();
         $store['user_id'] = Auth::user()->id;
         $store['book_image'] = $fileImage;
 
         $review->update($store);
-        return redirect()->route('reviews.index')
-                        ->with('success','Book was updated successfully');
+        Session::flash('success','Book updated successfully');
+        return redirect()->route('reviews.index');
+                        //->with('success','Book was updated successfully');
     }
     /**
      * Remove the specified resource from storage.
@@ -110,12 +116,13 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)    
+    public function destroy($id)
     {
         DB::table('review_comments')->where('review_id','=',$id)->delete();
 
         Review::destroy($id);
-        return redirect()->route('reviews.index')
-                        ->with('success','Book was deleted successfully');
+        Session::flash('success', 'Book deleted successfully');
+        return redirect()->route('reviews.index');
+                        //->with('success','Book was deleted successfully');
     }
 }

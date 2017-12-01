@@ -7,6 +7,7 @@ use App\User;
 use DB;
 use App\Quotation;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 use Log;
 
@@ -40,7 +41,8 @@ class SaleController extends Controller
             'author' => 'required',
             'description' => 'required',
             'publishing_company' => 'required',
-            //'book_image' => 'required|image|mimes:png,jpg'            
+            'sale_price' => 'required'
+            //'book_image' => 'required|image|mimes:png,jpg'
         ]);
 
         $file = $request->file('book_image');
@@ -52,8 +54,9 @@ class SaleController extends Controller
         $store['book_image'] = $fileImage;
 
         Sale::create($store);
-        return redirect()->route('sales.index')
-                        ->with('success','Book was created successfully');
+        Session::flash('success','Book created successfully');
+        return redirect()->route('sales.index');
+                        //->with('success','Book was created successfully');
     }
     /**
      * Display the specified resource.
@@ -61,7 +64,7 @@ class SaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Review $sale)
+    public function show(Sale $sale)
     {
         return view('sales.show',compact('sale'));
     }
@@ -71,7 +74,7 @@ class SaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Review $sale)
+    public function edit(Sale $sale)
     {
         return view('sales.edit',compact('sale'));
     }
@@ -82,27 +85,30 @@ class SaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Review $sale)
+    public function update(Request $request, Sale $sale)
     {
         request()->validate([
             'book_title' => 'required',
             'author' => 'required',
             'description' => 'required',
-            'publishing_company' => 'required'
+            'publishing_company' => 'required',
+            'sale_price' => 'required',
+            //'book_image' => 'required|image|mimes:png,jpg'
         ]);
 
         $file = $request->file('book_image');
-        
+
         $file->move('public/images/', $file->getClientOriginalName());
         $fileImage = 'public/images/'.$file->getClientOriginalName();
-       
+
         $store = $request->all();
         $store['user_id'] = Auth::user()->id;
         $store['book_image'] = $fileImage;
 
         $sale->update($store);
-        return redirect()->route('sales.index')
-                        ->with('success','Book was updated successfully');
+        Session::flash('success','Book was updated successfully');
+        return redirect()->route('sales.index');
+                        //->with('success','Book was updated successfully');
     }
     /**
      * Remove the specified resource from storage.
@@ -110,12 +116,13 @@ class SaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)    
+    public function destroy($id)
     {
         DB::table('sale_comments')->where('sale_id','=',$id)->delete();
 
         Sale::destroy($id);
-        return redirect()->route('sales.index')
-                        ->with('success','Book was deleted successfully');
+        Session::flash('success','Book was deleted successfully');
+        return redirect()->route('sales.index');
+                        //->with('success','Book was deleted successfully');
     }
 }

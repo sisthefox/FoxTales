@@ -30,7 +30,7 @@ body{background: url("img/books2.jpg");background-size: cover;background-repeat:
 /******** Panels ********/
 .panel{margin-top: 60px;padding: 10px;background-color: rgba(4, 4, 4, 0.42);border: 1px solid rgba(0, 0, 0, 0.11);border-radius:4px;box-shadow: 0px -1px 16px 3px rgba(0, 0, 0, 0.58);}
 .panel-default>.panel-heading{ font-weight: bold;font-size:large;color:#fff;background-color:rgba(4, 1, 4, 0.01);border-color:#d3e0e9}
-.coments-panels{margin-top: 0;color: #090909;padding: 0;background-color: rgb(251, 252, 253);border: 1px solid rgba(0, 0, 0, 0.11);border-radius:4px;box-shadow: 0px -1px 16px 3px rgba(2, 2, 2, 0.58);}
+.coments-panels{margin-top: 0;color: #090909;padding: 0;background-color: rgba(251, 252, 253, 0.52);border: 1px solid rgba(0, 0, 0, 0.11);border-radius:4px;box-shadow: 0px -1px 16px 3px rgba(2, 2, 2, 0.58);}
 .panel-default>.panel-heading.paneltop{font-size:inherit; color: #090909;background-color:rgba(193, 189, 189, 0.55);border-color:#d3e0e9;}
 
 /******** Forms ********/
@@ -54,3 +54,11 @@ body{background: url("img/books2.jpg");background-size: cover;background-repeat:
 .row{margin-left: 0px;margin-right: 0px;}
 
 #hearts-existing {color: #FF0000;font-size: 26px;}
+
+.img-thumbnail.imgbooks{ max-width: 150px;min-width: 150px;max-height: 200px;min-height: 200px;}
+
+.descri input[type="text"]{ height: 150px; background-color: red;}
+
+.edit{background-color: #2a652c;border-color: #2a652c;}
+
+.reply{background-color: #bb651b;border-color: #bb651b}

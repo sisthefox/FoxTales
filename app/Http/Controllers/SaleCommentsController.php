@@ -6,6 +6,7 @@ use App\SaleComment;
 use App\User;
 use App\Review;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 use Log;
 
@@ -17,9 +18,9 @@ class SaleCommentsController extends Controller
          	['book_title','like', '%' . request('query'). '%'],
          	['user_id','<>', Auth::user()->id],
          ])->get();
-		 		 				
-		
-								
+
+
+
          return view('salesresults')->with('sales', $sales)
          					  ->with('book_title', 'Search Results: '. request('query'))
          					  ->with('settings')
@@ -43,15 +44,16 @@ class SaleCommentsController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'comment' => 'required',            
+            'comment' => 'required',
         ]);
-        
+
         $store = $request->all();
 		$store['user_id'] = Auth::user()->id;
-     	 
+
         SaleComment::create($store);
-        return redirect()->route('salescomments.index')
-                        ->with('success','Commente created successfully');
+        Session::flash('success','Comment created successfully');
+        return redirect()->route('salescomments.index');
+                        //->with('success','Commente created successfully');
     }
     /**
      * Display the specified resource.
@@ -90,17 +92,18 @@ class SaleCommentsController extends Controller
         ]);
 
         $file = $request->file('book_image');
-        
+
         $file->move('public/images/', $file->getClientOriginalName());
         $fileImage = 'public/images/'.$file->getClientOriginalName();
-       
+
         $store = $request->all();
         $store['user_id'] = Auth::user()->id;
         $store['book_image'] = $fileImage;
 
         $sale->update($store);
-        return redirect()->route('sales.index')
-                        ->with('success','Sale updated successfully');
+        Session::flash('success','Comment updated successfully');
+        return redirect()->route('sales.index');
+                        //->with('success','Sale updated successfully');
     }
     /**
      * Remove the specified resource from storage.
@@ -111,7 +114,8 @@ class SaleCommentsController extends Controller
     public function destroy($id)
     {
         Sale::destroy($id);
-        return redirect()->route('sales.index')
-                        ->with('success','Sale deleted successfully');
+        Session::flash('success','Comment deleted successfully');
+        return redirect()->route('sales.index');
+                        //->with('success','Sale deleted successfully');
     }
 }

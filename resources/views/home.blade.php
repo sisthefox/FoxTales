@@ -13,6 +13,9 @@
                     @endif
 
                     Welcome to the FoxTales!
+                   <p> Did you read today?</p>
+                    Take your beer and let's get started
+
                 </div>
             </div>
         </div>
