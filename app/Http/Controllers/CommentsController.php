@@ -51,7 +51,7 @@ class CommentsController extends Controller
 		    $store['user_id'] = Auth::user()->id;
 
         Comment::create($store);
-        Session::flash('success','Comment created successfully');
+        Session::flash('success','Comment has been sent');
         return redirect()->route('comments.index');
                         //->with('success','Book created successfully');
     }
@@ -101,7 +101,7 @@ class CommentsController extends Controller
         $store['book_image'] = $fileImage;
 
         $trade->update($store);
-        Session::flash('success','Comment updated successfully');
+        Session::flash('success','Comment has been updated');
         return redirect()->route('comments.index');
                         //->with('success','Wishlist updated successfully');
     }
@@ -114,7 +114,7 @@ class CommentsController extends Controller
     public function destroy($id)
     {
         Trade::destroy($id);
-        Session::flash('success','Comment deleted successfully');
+        Session::flash('success','Comment has been deleted');
         return redirect()->route('comments.index');
                         //->with('success','Trade deleted successfully');
     }

@@ -51,7 +51,7 @@ class ReviewCommentsController extends Controller
 		    $store['user_id'] = Auth::user()->id;
 
         ReviewComment::create($store);
-        Session::flash('success','Commente created successfully');
+        Session::flash('success','Comment has been sent');
         return redirect()->route('reviewcomments.index');
                         //->with('success','Commente created successfully');
     }
@@ -101,7 +101,7 @@ class ReviewCommentsController extends Controller
         $store['book_image'] = $fileImage;
 
         $trade->update($store);
-        Session::flash('success','Commente updated successfully');
+        Session::flash('success','Comment has been updated');
         return redirect()->route('comments.index');
                         //->with('success','Wishlist updated successfully');
     }
@@ -116,7 +116,7 @@ class ReviewCommentsController extends Controller
         DB::table('review_comments')->where('review_id','=',$id)->delete();
 
         Review::destroy($id);
-        Session::flash('success','Commente updated successfully');
+        Session::flash('success','Comment has been deleted');
         return redirect()->route('review.index');
                         //->with('success','Trade deleted successfully');
     }

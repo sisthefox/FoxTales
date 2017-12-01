@@ -41,8 +41,8 @@ class SaleController extends Controller
             'author' => 'required',
             'description' => 'required',
             'publishing_company' => 'required',
-            'sale_price' => 'required'
-            //'book_image' => 'required|image|mimes:png,jpg'
+            'sale_price' => 'required',
+            'book_image' => 'required|image|max:5000'
         ]);
 
         $file = $request->file('book_image');
@@ -93,7 +93,7 @@ class SaleController extends Controller
             'description' => 'required',
             'publishing_company' => 'required',
             'sale_price' => 'required',
-            //'book_image' => 'required|image|mimes:png,jpg'
+            'book_image' => 'required|image|max:5000'
         ]);
 
         $file = $request->file('book_image');

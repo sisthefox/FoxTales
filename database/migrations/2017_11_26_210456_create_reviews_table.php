@@ -19,7 +19,7 @@ class CreateReviewsTable extends Migration
             $table->text('description');
             $table->string('author');
             $table->string('publishing_company');
-            $table->integer('classification');
+            $table->integer('rating');
             $table->string('book_image');
 			$table->unsignedInteger('user_id')->nullable();    
 			

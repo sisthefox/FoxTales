@@ -47,13 +47,13 @@
                     </ul>
 					<ul class="nav navbar-nav">
                         @if (!Auth::guest())
-                            <li><a href="{{ url('trades') }}">Trade</a></li>
+                            <li><a href="{{ url('trades') }}">Trades</a></li>
                             &nbsp;
                         @endif
                     </ul>
 					<ul class="nav navbar-nav">
                         @if (!Auth::guest())
-                            <li><a href="{{ url('reviews') }}">Review</a></li>
+                            <li><a href="{{ url('reviews') }}">Reviews</a></li>
                             &nbsp;
                         @endif
                     </ul>

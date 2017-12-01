@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="page-header">
-                <h2>Trade</h2>
+                <h2>Trades</h2>
             </div>
         </div>
     </div>

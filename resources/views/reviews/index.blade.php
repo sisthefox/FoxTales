@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="page-header">
-                <h2>Review</h2>
+                <h2>Reviews</h2>
             </div>
         </div>
     </div>
@@ -50,7 +50,7 @@
                     </div>
                     <p>Publishing Company: {{ $review->publishing_company }}</p>
 
-                     <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $review->classification }}" data-size="xs" disabled="">
+                     <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $review->rating }}" data-size="xs" disabled="">
                     <div align=right></div>
 
 

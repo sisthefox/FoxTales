@@ -29,7 +29,7 @@
           <div class="form-group">
               <strong><h4>Rating:</h3></strong>
 
-              {!! Form::text('classification', null, array('placeholder' => 'Please Set 1->5','class' => 'form-control')) !!}
+              {!! Form::text('rating', null, array('placeholder' => 'Please Set 1->5','class' => 'form-control')) !!}
           </div>
        </div>
          <div class="col-xs-12 col-sm-12 col-md-12">

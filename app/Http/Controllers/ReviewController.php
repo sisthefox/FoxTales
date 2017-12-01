@@ -42,8 +42,8 @@ class ReviewController extends Controller
             'author' => 'required',
             'description' => 'required',
             'publishing_company' => 'required',
-            'classification' => 'required|integer|max:5',
-            'book_image' => 'required|image|mimes:png,jpg'
+            'rating' => 'required|integer|max:5',
+            'book_image' => 'required|image|max:5000'
         ]);
 
         $file = $request->file('book_image');
@@ -92,8 +92,9 @@ class ReviewController extends Controller
             'book_title' => 'required',
             'author' => 'required',
             'description' => 'required',
-            'classification' => 'required|integer|max:5',
-            'publishing_company' => 'required'
+            'rating' => 'required|integer|max:5',
+            'publishing_company' => 'required',
+            'book_image' => 'required|image|max:5000'
         ]);
 
         $file = $request->file('book_image');

@@ -12,7 +12,7 @@ class Wishlist extends Model
         'author',
         'description', 
         'publishing_company', 
-        'classification',
+        'rating',
         'book_image', 
         'user_id',
     ];

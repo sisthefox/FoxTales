@@ -51,7 +51,7 @@ class SaleCommentsController extends Controller
 		$store['user_id'] = Auth::user()->id;
 
         SaleComment::create($store);
-        Session::flash('success','Comment created successfully');
+        Session::flash('success','Comment has been sent');
         return redirect()->route('salescomments.index');
                         //->with('success','Commente created successfully');
     }
@@ -101,7 +101,7 @@ class SaleCommentsController extends Controller
         $store['book_image'] = $fileImage;
 
         $sale->update($store);
-        Session::flash('success','Comment updated successfully');
+        Session::flash('success','Comment has been updated');
         return redirect()->route('sales.index');
                         //->with('success','Sale updated successfully');
     }
@@ -114,7 +114,7 @@ class SaleCommentsController extends Controller
     public function destroy($id)
     {
         Sale::destroy($id);
-        Session::flash('success','Comment deleted successfully');
+        Session::flash('success','Comment has been deleted');
         return redirect()->route('sales.index');
                         //->with('success','Sale deleted successfully');
     }

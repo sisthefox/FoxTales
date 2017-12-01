@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('reviewcomments.index', ['review_id' => $review_id]) }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                <a class="btn btn-primary" href="{{ route('reviews.index', ['review_id' => $review_id]) }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
             </div>
         </div>
     </div>

@@ -49,14 +49,14 @@
 					 <ul class="nav navbar-nav">
                         @if (!Auth::guest())
                             <!--<li><a href="{{ url('trades') }}">Wishlist</a></li>-->
-                            <li><a href="{{ route('trades.index') }}">Trade</a></li>
+                            <li><a href="{{ route('trades.index') }}">Trades</a></li>
                             &nbsp;
                         @endif
                     </ul>
 					 <ul class="nav navbar-nav">
                         @if (!Auth::guest())
                             <!--<li><a href="{{ url('trades') }}">Wishlist</a></li>-->
-                            <li><a href="{{ route('reviews.index') }}">Review</a></li>
+                            <li><a href="{{ route('reviews.index') }}">Reviews</a></li>
                             &nbsp;
                         @endif
                     </ul>

@@ -41,7 +41,7 @@ class TradeController extends Controller
             'author' => 'required',
             'description' => 'required',
             'publishing_company' => 'required',
-            'book_image' => 'required|image|mimes:png,jpg'
+            'book_image' => 'required|image|max:5000'
         ]);
 
         $file = $request->file('book_image');
@@ -90,7 +90,8 @@ class TradeController extends Controller
             'book_title' => 'required',
             'author' => 'required',
             'description' => 'required',
-            'publishing_company' => 'required'
+            'publishing_company' => 'required',
+            'book_image' => 'required|image|max:5000'
         ]);
 
         $file = $request->file('book_image');
